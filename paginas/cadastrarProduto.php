@@ -1,62 +1,31 @@
-<?php
-    // ini_set("display_errors", true);
-    // error_reporting(E_ALL);
 
-    include("../conexao.php");
+<div class="container mt-5">
+        <h2>Cadastro de Produto</h2>
+        <form action="processar_cadastro.php" method="POST">
+            <div class="form-group">
+                <label for="ean">Código de Barras</label>
+                <input type="text" class="form-control" id="codBarras" name="codBarras" required>
+            </div>
+            <div class="form-group">
+                <label for="nome">Nome do Produto</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+           
+            <div class="form-group">
+                <label for="qtdEstoque">Quantidade em Estoque</label>
+                <input type="number" class="form-control" id="qtdEstoque" name="qtdEstoque" required>
+            </div>
+            <div class="form-group">
+                <label for="qtdEstoqueMinimo">Quantidade Mínima em Estoque</label>
+                <input type="number" class="form-control" id="qtdEstoqueMinimo" name="qtdEstoqueMinimo" required>
+            </div>
+            <div class="form-group">
+                <label for="obs">Observações</label>
+                <textarea class="form-control" id="obs" name="obs" rows="3"></textarea>
+            </div>
+           
+            <button type="submit" class="btn" style="background-color: var(--cor-de-destaque); color: var(--cor-de-texto);">Cadastrar</button>
+        </form>
+    </div>
 
-    $id_pergunta = (int)$_REQUEST["id_pergunta"];
-    $empresa = (int)$_SESSION['empresacodigo'];
 
-    $stmt = $conexao -> prepare("SELECT * FROM perguntas WHERE empresa = :empresa AND id = :pergunta;");
-    
-    $stmt -> execute(array(
-        ":empresa" => $empresa,
-        ":pergunta" => $id_pergunta
-    ));
-
-    $pergunta = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-    //echo var_dump($pergunta);
-?>
-<h2>Pergunta</h2>
-
-<?php 
-    if($pergunta == array()) {
-        echo "Esta pergunta não existe!";
-    }
-    else {
-
-        $stmt2 = $conexao -> prepare("SELECT notas.nota, notas.pergunta, STR_TO_DATE(notas.data_nota, '%Y-%m-%d') as data_nota FROM notas INNER JOIN perguntas ON notas.pergunta = perguntas.id WHERE notas.pergunta = :pergunta AND perguntas.empresa = :empresa");
-        $stmt2 -> execute(array(
-            ":empresa" => $empresa,
-            ":pergunta" => $id_pergunta
-        ));
-
-        $respostas = $stmt2 -> fetchAll(PDO::FETCH_ASSOC);
-
-        if($respostas == array()) {
-            echo "Esta pergunta não contém respostas.";
-        }
-        else {
-            
-            echo
-            '<div class="grafico-container">
-                
-            </div>';
-
-            //$respostas_pergunta = soma_respostas($respostas);
-
-        }
-    }
-?>
-
-<?php
-    if($respostas != array()) {
-        echo '
-        <script>
-            window.onload = function() {
-                plotar_grafico('.json_encode(soma_respostas($respostas)).', "donut", "'.$pergunta[0]["pergunta"].'");
-            }
-        </script>
-        ';
-    }
-?>

@@ -12,7 +12,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Syspan Satisfação - Cadastro</title>
+  <title>InventorySolutions - Cadastro</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -27,24 +27,14 @@
 <body class="hold-transition">
 <!--<div class="register-box">-->
 
-     
-      <div class="card-body mx-auto" style="width:90%">
+<div class="d-flex justify-content-center align-items-center mx-auto" style="height: 90vh; width:80% !important;"> 
+      <div class="card-body" style="">
 
         <form class="form-cadastro">
           <div class="section-signup" style="background-color: var(--cor-de-destaque);color: var(--cor-de-texto);">
             INFORMAÇÕES GERAIS
           </div>
-          <!-- <div class="input-group mb-3">
-            <select class="form-control" name="tipo_cadastro" id="tipo_cadastro">
-              <option value="1">Pessoa Jurídica</option>
-              <option value="0">Pessoa Física</option>
-            </select>
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-id-card"></span>
-              </div>
-            </div>
-          </div> -->
+    
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Razão Social" name="razao_social" id="razao_social">
             <div class="input-group-append">
@@ -73,10 +63,10 @@
           </div>
 
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Celular" name="celular" id="celular">
+            <input type="text" class="form-control" placeholder="email" name="email" id="email">
             <div class="input-group-append">
               <div class="input-group-text">
-                <span class="fas fa-mobile"></span>
+                <span class="fa fa-envelope"></span>
               </div>
             </div>
           </div>
@@ -93,7 +83,7 @@
             <input type="email" class="form-control" placeholder="Usuário" name="usuario" id="usuario">
             <div class="input-group-append">
               <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
+                <span class="fa fa-user"></span>
               </div>
             </div>
           </div>
@@ -128,6 +118,7 @@
 
         
       </div>
+    </div>
       <!-- /.form-box -->
   
 

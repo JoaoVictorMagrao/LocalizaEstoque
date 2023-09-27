@@ -1,12 +1,8 @@
 <?php
 error_reporting(false);
-  if (session_status() != PHP_SESSION_ACTIVE) session_start();
-  if(!isset($_SESSION['empresacodigo'])) {
-    header("location: /estoque/login.php");
-  }
 
-  include("../conexao.php");
-
+  include("../conexao_estoque.php");
+  include("estilos.php");
   include("util.php");
 ?>
 <!DOCTYPE html>
@@ -14,12 +10,9 @@ error_reporting(false);
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Satisfação - Retaguarda</title>
+  <title>InventorySolutions</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -39,7 +32,7 @@ error_reporting(false);
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="./plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   
-  <link rel="icon" type="image/x-icon" href="dist/img/syspan.png">
+  <link rel="icon" type="image/x-icon" href="dist/img/lg.png">
 
   <link rel="stylesheet" href="dist/css/responsivetable.css">
 
@@ -61,7 +54,7 @@ error_reporting(false);
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/syspan.png" alt="Syspan" height="60" width="60">
+    <img class="animation__shake" src="dist/img/lg.png" alt="Logo" height="60" width="60">
   </div>
   <!-- /.navbar -->
 
@@ -73,11 +66,17 @@ error_reporting(false);
     <div class="p-5">
       <?php 
         // Aqui é feito a inclusão da guia escolhida pelo usuário
-        if ($_REQUEST['tab-celular'] == 1) {
-          include("./paginas/celular.php");
+        if ($_REQUEST['tab-cadastrarProduto'] == 1) {
+          include("./paginas/cadastrarProduto.php");
         }
-        else if($_REQUEST['tab-campanha'] == 1) {
-          include("./paginas/campanha.php");
+        else if($_REQUEST['tab-cadastrarLocalizacao'] == 1) {
+          include("./paginas/cadastrarLocalizacao.php");
+        }
+        else if($_REQUEST['tab-buscarProduto'] == 1) {
+          include("./paginas/buscarProduto.php");
+        }
+        else if($_REQUEST['tab-localizarProduto'] == 1) {
+          include("./paginas/localizarProduto.php");
         }
         else if($_REQUEST['tab-perfil'] == 1) {
           include("./paginas/perfil.php");
@@ -90,7 +89,7 @@ error_reporting(false);
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 1997-<?= date("Y"); ?> <a href="https://syspan.com.br/" style='color: black;' target='_blank'>Syspan - Soluções Tecnológicas</a>.</strong>
+    <strong>Copyright &copy; 2023 <a href="#" style='color: black;' target='_blank'>InventorySolutions</a>.</strong>
     Todos os direitos reservados.
   </footer>
 
@@ -153,6 +152,7 @@ error_reporting(false);
 <script src="./plugins/jquery-validation/localization/messages_pt_BR.js"></script>
 <script src="./plugins/jquery-validation/localization/methods_pt.js"></script>
 <script src="./plugins/jquery-mask/jquery.mask.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 
 
 <script>
