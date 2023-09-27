@@ -1,0 +1,30 @@
+@media screen and (orientation: landscape) {
+    .nao-aparece-pc {
+        display: none;
+    }
+}
+
+@media screen and (orientation: portrait), (max-width: 1050px) {
+    /* table {
+        font-size: 6px !important;    
+    } */
+
+    table {
+        width: 100%;
+    }
+
+    /* table td {
+        word-break: break-all;
+    } */
+    .nao-aparece-mobile {
+        display: none;
+    }
+
+    .content-wrapper .p-5 {
+        padding: 5px !important;
+    }
+
+    .w95od {
+        width: 95%;
+    }
+}
