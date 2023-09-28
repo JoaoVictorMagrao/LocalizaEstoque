@@ -1,8 +1,4 @@
 <?php
-  session_start();
-  if(isset($_SESSION["empresacodigo"])) {
-    header("location: /estoque");
-  }
   include("estilos.php");
 ?>
 
@@ -109,21 +105,11 @@
             contentType: "application/json",
             data: JSON.stringify(jsonData),
             success: function (data) {
-               console.log(data);
-
                if (data.status) {
-     
-            var idUsuario = data.dados_usuario.id;
-            var razaoSocial = data.dados_usuario.razao_social;
-
-            // Agora você pode usar as variáveis idUsuario e razaoSocial em todo o seu código
-            console.log("ID do usuário: " + idUsuario);
-            console.log("Razão Social: " + razaoSocial);
-            //header("location: /estoque"); 
-            window.location.href = "./?tab-localizarProduto=1";
-          } else {
-            mensagem("error", "Usuário ou senha incorretos.");
-          }
+                 window.location.href = "./?tab-localizarProduto=1";
+               } else {
+                  mensagem("error", "Usuário ou senha incorretos.");
+              }
             },
             error: function () {
                 mensagem("error", "Algo de errado aconteceu na tentativa de efetuar o login. Tente novamente mais tarde.");
@@ -131,16 +117,7 @@
         });
   });
 
-  
-
-
-
 </script>
 
-<?php
-  // if(isset($_GET['erro']) and $_GET['erro'] == 1) {
-  //   echo "<script>mensagem(\"error\", \"Usuário ou senha incorretos.\")</script>";
-  // }  
-?>
 </body>
 </html>

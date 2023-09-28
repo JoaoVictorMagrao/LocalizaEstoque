@@ -13,7 +13,6 @@
         exit;
     }
 
-
     $codBarras        = $data['codBarras'];
     $nomeProduto      = $data['nomeProduto'];
     $qtdEstoque       = $data['qtdEstoque'];
@@ -76,8 +75,6 @@
       $resultado["status"] = false;
       $resultado["mensagem"] = "Erro ao inserir o produto: " . $e->getMessage();
   }
-    
-
     
     echo json_encode($resultado);
 ?>

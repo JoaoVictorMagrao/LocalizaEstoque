@@ -47,7 +47,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="./?tab-saidaProduto=1" style="<?= ($_REQUEST['tab-saidaProduto'] == 1) ? "background-color: var(--cor-de-destaque); color: var(--cor-de-texto);" : ""; ?>" class="nav-link <?= ($_REQUEST['tab-saidaProduto'] == 1) ? "active" : "";?>">
               <i class="nav-icon fas fa-mobile"></i>
               <p>
@@ -62,7 +62,7 @@
                 Perfil
               </p>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
      

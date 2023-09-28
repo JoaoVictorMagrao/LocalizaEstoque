@@ -1,31 +1,31 @@
 
 <div class="container mt-5">
-        <h2>Cadastro de Produto</h2>
-        <form action="processar_cadastro.php" method="POST">
-            <div class="form-group">
-                <label for="ean">Código de Barras</label>
-                <input type="text" class="form-control" id="codBarras" name="codBarras" required>
-            </div>
-            <div class="form-group">
-                <label for="nome">Nome do Produto</label>
-                <input type="text" class="form-control" id="nome" name="nome" required>
-            </div>
-           
-            <div class="form-group">
-                <label for="qtdEstoque">Quantidade em Estoque</label>
-                <input type="number" class="form-control" id="qtdEstoque" name="qtdEstoque" required>
-            </div>
-            <div class="form-group">
-                <label for="qtdEstoqueMinimo">Quantidade Mínima em Estoque</label>
-                <input type="number" class="form-control" id="qtdEstoqueMinimo" name="qtdEstoqueMinimo" required>
-            </div>
-            <div class="form-group">
-                <label for="obs">Observações</label>
-                <textarea class="form-control" id="obs" name="obs" rows="3"></textarea>
-            </div>
-           
-            <button type="submit" class="btn" style="background-color: var(--cor-de-destaque); color: var(--cor-de-texto);">Cadastrar</button>
-        </form>
-    </div>
+    <h2>Cadastro de Produto</h2>
+      <form>
+          <div class="form-group">
+              <label for="codBarrasCadastro">Código de Barras <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="codBarrasCadastro" name="codBarrasCadastro" required>
+          </div>
+          <div class="form-group">
+              <label for="nomeProdutoCadastro">Nome do Produto <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="nomeProdutoCadastro" name="nomeProdutoCadastro" required>
+          </div>
+        
+          <div class="form-group">
+              <label for="qtdEstoqueCadastro">Quantidade em Estoque <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" id="qtdEstoqueCadastro" name="qtdEstoqueCadastro" required>
+          </div>
+          <div class="form-group">
+              <label for="qtdEstoqueMinimoCadastro">Quantidade Mínima em Estoque <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" id="qtdEstoqueMinimoCadastro" name="qtdEstoqueMinimoCadastro" required>
+          </div>
+          <div class="form-group">
+              <label for="obsCadastro">Observações</label>
+              <textarea class="form-control" id="obsCadastro" name="obsCadastro" rows="3"></textarea>
+          </div>
+        
+          <button type="button" class="btn" id="btnCadastrarProduto" style="background-color: var(--cor-de-destaque); color: var(--cor-de-texto);">Cadastrar</button>
+      </form>
+</div>
 
 
