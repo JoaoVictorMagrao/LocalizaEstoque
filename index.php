@@ -36,6 +36,8 @@ error_reporting(false);
 
   <link rel="stylesheet" href="dist/css/responsivetable.css">
 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
   <style>
   
   </style>
@@ -152,7 +154,6 @@ error_reporting(false);
 <script src="./plugins/jquery-validation/localization/messages_pt_BR.js"></script>
 <script src="./plugins/jquery-validation/localization/methods_pt.js"></script>
 <script src="./plugins/jquery-mask/jquery.mask.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 
 
 <script>

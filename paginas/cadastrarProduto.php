@@ -11,14 +11,14 @@
               <input type="text" class="form-control" id="nomeProdutoCadastro" name="nomeProdutoCadastro" required>
           </div>
         
-          <div class="form-group">
+          <!-- <div class="form-group">
               <label for="qtdEstoqueCadastro">Quantidade em Estoque <span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="qtdEstoqueCadastro" name="qtdEstoqueCadastro" required>
           </div>
           <div class="form-group">
               <label for="qtdEstoqueMinimoCadastro">Quantidade Mínima em Estoque <span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="qtdEstoqueMinimoCadastro" name="qtdEstoqueMinimoCadastro" required>
-          </div>
+          </div> -->
           <div class="form-group">
               <label for="obsCadastro">Observações</label>
               <textarea class="form-control" id="obsCadastro" name="obsCadastro" rows="3"></textarea>

@@ -11,10 +11,10 @@ include("../../conexao_estoque.php");
                     <label for="codBarrasLocalizacao">Código de Barras</label>
                     <input type="text" class="form-control" id="codBarrasLocalizacao" name="codBarrasLocalizacao" required>
                 </div>
-                <div class="form-group w-50">
+                <!-- <div class="form-group w-50">
                     <label for="nomeProdutoLocalizao">Nome do Produto</label>
-                    <input type="text" class="form-control" id="nomeProdutoLocalizao" name="nomeProdutoLocalizao" required>
-                </div>
+                    <input type="text" class="form-control typeahead" id="nomeProdutoLocalizao" name="nomeProdutoLocalizao">
+                </div> -->
             </div>
             <h2>Localização</h2>
 

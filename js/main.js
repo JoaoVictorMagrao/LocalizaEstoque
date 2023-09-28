@@ -2,51 +2,98 @@
 
 $(document).ready(function() {
 
+  /* ------------------------------ PAGINA LOCALIZAR PRODUTO ------------------------------*/
+  var produtoData = {};
+
+$.ajax({
+    url: '/Estoque/services/listaProdutos.php',
+    type: 'GET',
+    dataType: 'json',
+    success: function(response) {
+        if (response.status) {
+            $.each(response.produtos, function(index, produto) {
+                produtoData[produto.nome] = produto.id;
+            });
+
+            // Inicialize o autocompletar após receber os dados
+            $(function() {
+                $("#nomeProduto").autocomplete({
+                    source: Object.keys(produtoData),
+                    select: function(event, ui) {
+                        var selectedProdutoNome = ui.item.value;
+                        var selectedProdutoID = produtoData[selectedProdutoNome];
+                        
+                    }
+                });
+            });
+
+            console.log(produtoData);
+        } else {
+            console.error('Erro na resposta do servidor:', response.mensagem);
+        }
+    },
+    error: function() {
+        console.error('Erro na requisição AJAX');
+    }
+});
+
+ /* ------------------------------ FIM PAGINA LOCALIZAR PRODUTO ------------------------------*/
+
+
+  /* ------------------------------ PAGINA CADASTRAR PRODUTO ------------------------------*/
   $("#btnCadastrarProduto").on("click", function() {
-   
+
     var codBarras          = $('#codBarrasCadastro').val();
     var nomeProduto        = $('#nomeProdutoCadastro').val();
     var qtdEstoque         = $('#qtdEstoqueCadastro').val();
     var qtdEstoqueMenimo   = $('#qtdEstoqueMinimoCadastro').val();
     var obs                = $('#obsCadastro').val();
    
-    var jsonData = {
-            "codBarras": codBarras,
-            "nomeProduto": nomeProduto,
-            "qtdEstoque": qtdEstoque,
-            "qtdMinimaEstoque": qtdEstoqueMenimo,
-            "obs": obs
-        };
-    $.ajax({
+    if(codBarras == '' || nomeProduto == '' || obs == ''){
+      mensagem("warning", "Preencha todos os campos obrigatórios.");
+    }else{
+        var jsonData = {
+                "codBarras": codBarras,
+                "nomeProduto": nomeProduto,
+                "qtdEstoque": qtdEstoque,
+                "qtdMinimaEstoque": qtdEstoqueMenimo,
+                "obs": obs
+            };
+        $.ajax({
             method: "POST",
             url: "/Estoque/services/cadastroProduto.php",
             contentType: "application/json",
             data: JSON.stringify(jsonData),
             success: function (data) {
-               if (data.status) {
+              if (data.status) {
                   $('#codBarrasCadastro').val('');
                   $('#nomeProdutoCadastro').val('');
                   $('#qtdEstoqueCadastro').val('');
                   $('#qtdEstoqueMinimoCadastro').val('');
                   $('#obsCadastro').val('');
-                mensagem("sucess", data.mensagem);
-               } else {
+                mensagem("success", data.mensagem);
+              } else {
                 mensagem("error", data.mensagem);
                 }
             },
             error: function () {
-                mensagem("error", "Algo de errado aconteceu na tentativa de efetuar o login. Tente novamente mais tarde.");
+                mensagem("error", "Algo de errado aconteceu na tentativa de cadastrar o produto. Tente novamente mais tarde.");
             }
-        });
+          });
+    } //FIM ELSE
   });
+ /* ------------------------------ FIM PAGINA CADASTRAR PRODUTO ------------------------------*/
 
+  /* ------------------------------ PAGINA CADASTRAR LOCALIZACAO DO PRODUTO ------------------------------*/
   $("#btnCadastrarLocalizacao").on("click", function() {
   
    // var idProduto = $('#idProduto').val();
     var corredor    = $('#corredorLocalizacao').val();
     var coluna      = $('#colunaLocalizacao').val();
     var nivel       = $('#nivelLocalizacao').val();
-   
+    if(corredor == '' || coluna == '' || nivel == ''){
+      mensagem("warning", "Preencha todos os campos obrigatórios.");
+    }else{
     var jsonData = {
             "idProduto": 1,
             "corredor": corredor,
@@ -64,35 +111,17 @@ $(document).ready(function() {
                   $('#corredorLocalizacao').val('');
                   $('#colunaLocalizacao').val('');
                   $('#nivelLocalizacao').val('');
-                mensagem("sucess", data.mensagem);
+                mensagem("success", data.mensagem);
                } else {
                 mensagem("error", data.mensagem);
                 }
             },
             error: function () {
-                mensagem("error", "Algo de errado aconteceu na tentativa de efetuar o login. Tente novamente mais tarde.");
+                mensagem("error", "Algo de errado aconteceu na tentativa de cadastrar o produto. Tente novamente mais tarde.");
             }
         });
+      } //FIM ELSE
   });
-  
-  
-    // Dados de exemplo (substitua isso com seus próprios dados)
-    var produtos = ['Produto 1', 'Produto 2', 'Produto 3', 'Produto 4', 'Produto 5'];
-
-    // Configurar o Bloodhound
-    var produtosBloodhound = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.whitespace,
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: produtos
-    });
-
-    // Inicializar o Typeahead.js
-    $('#nomeProdutoLocaliza').typeahead({
-        hint: true,
-        highlight: true,
-        minLength: 1
-    }, {
-        name: 'produtos',
-        source: produtosBloodhound
-    });
+   /* ------------------------------ FIM PAGINA CADASTRAR LOCALIZACAO DO PRODUTO ------------------------------*/
+ 
 });

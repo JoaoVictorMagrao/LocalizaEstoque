@@ -6,8 +6,8 @@
                 <input type="text" class="form-control" id="codBarras" name="codBarras" required>
             </div>
             <div class="form-group">
-                <label for="nome">Nome do Produto</label>
-                <input type="text" class="form-control" id="nome" name="nome" required>
+                <label for="nomeProduto">Nome do Produto</label>
+                <input type="text" class="form-control" id="nomeProduto" name="nomeProduto" required>
             </div>
 
             <button type="submit" class="btn" style="background-color: var(--cor-de-destaque); color: var(--cor-de-texto);">Procurar</button>
